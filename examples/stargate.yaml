@@ -1,0 +1,13 @@
+metrics:
+  histograms:
+    - name: stargate_NfsWriteOpStartWrite_total
+      help: Latency histogram for NfsWriteOp calls
+      bucket_type: exp2
+      bucket_min: 0
+      bucket_max: 26
+      bucket_multiplier: 0.000001 # microseconds to seconds
+      labels:
+        - name: bucket
+          size: 8
+          decoders:
+            - name: uint
