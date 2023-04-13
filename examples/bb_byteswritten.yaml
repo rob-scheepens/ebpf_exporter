@@ -4,34 +4,34 @@ metrics:
       help: Number of bytes written
       labels:
         - name: comm
-          size: 8
+          size: 16
           decoders:
             - name: uint
     - name: bpf_total_size_read
       help: Number of bytes read
       labels:
         - name: comm
-          size: 8
+          size: 16
           decoders:
             - name: uint
     - name: bpf_total_size_discard
       help: Number of bytes discard
       labels:
         - name: comm
-          size: 8
+          size: 16
           decoders:
             - name: uint
     - name: bpf_total_size_none
       help: Number of bytes none
       labels:
         - name: comm
-          size: 8
+          size: 16
           decoders:
             - name: uint
     - name: bpf_total_size_unknown
       help: Number of bytes unknown
       labels:
         - name: comm
-          size: 8
+          size: 16
           decoders:
             - name: uint
