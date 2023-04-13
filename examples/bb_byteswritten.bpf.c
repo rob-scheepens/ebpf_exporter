@@ -55,6 +55,8 @@ static __always_inline int trace_rq_start(struct block_rq_issue_struct *p)
 {
 
   struct total_size *pMap = &bpf_total_size_unknown;
+  char comm[16];
+  bpf_get_current_comm(&comm, sizeof(comm));
 
   switch (p->rwbs[0])
   {
@@ -71,11 +73,9 @@ static __always_inline int trace_rq_start(struct block_rq_issue_struct *p)
     pMap = &bpf_total_size_none;
     break;
   }
-  
-  char comm[16];
-  bpf_get_current_comm(&comm, sizeof(comm) );
-  
-  increment_map(pMap, &comm, p->bytes);
+
+  //increment_map(pMap, &comm, p->bytes);
+  increment_map(pMap, comm, p->bytes);
   return 0;
 }
 
@@ -86,3 +86,4 @@ int block_rq_issue(struct block_rq_issue_struct *p)
 }
 
 char LICENSE[] SEC("license") = "GPL";
+

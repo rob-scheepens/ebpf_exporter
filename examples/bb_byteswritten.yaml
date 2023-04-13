@@ -35,3 +35,21 @@ metrics:
           size: 16
           decoders:
             - name: string
+  calculated:
+    - name: bpf_total_size
+      help: Total number of bytes (read, written, and discarded)
+      labels:
+        - name: pid
+          size: 16
+          decoders:
+            - name: uint
+      expressions:
+        - record: bpf_total_size_written_total
+          expr: bpf_total_size_written
+        - record: bpf_total_size_read_total
+          expr: bpf_total_size_read
+        - record: bpf_total_size_discard_total
+          expr: bpf_total_size_discard
+        - record: bpf_total_size
+          expr: bpf_total_size_written_total + bpf_total_size_read_total + bpf_total_size_discard_total
+
