@@ -3,7 +3,6 @@
 #include <bpf/bpf_core_read.h>
 #include "bits.bpf.h"
 #include "maps.bpf.h"
-#include <linux/sched.h>
 
 extern int LINUX_KERNEL_VERSION __kconfig;
 
@@ -73,7 +72,7 @@ static __always_inline int trace_rq_start(struct block_rq_issue_struct *p)
     break;
   }
   
-  char comm[TASK_COMM_LEN];
+  char comm[16];
   bpf_get_current_comm(&comm, int sizeof(comm) )
   
   increment_map(pMap, &comm, p->bytes);
