@@ -74,8 +74,7 @@ static __always_inline int trace_rq_start(struct block_rq_issue_struct *p)
     break;
   }
 
-  //increment_map(pMap, &comm, p->bytes);
-  increment_map(pMap, comm, p->bytes);
+  increment_map(pMap, &comm, p->bytes);
   return 0;
 }
 
