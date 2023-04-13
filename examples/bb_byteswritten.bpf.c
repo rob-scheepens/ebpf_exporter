@@ -3,6 +3,7 @@
 #include <bpf/bpf_core_read.h>
 #include "bits.bpf.h"
 #include "maps.bpf.h"
+#include <linux/sched.h>
 
 extern int LINUX_KERNEL_VERSION __kconfig;
 
