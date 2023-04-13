@@ -71,8 +71,10 @@ static __always_inline int trace_rq_start(struct block_rq_issue_struct *p)
     pMap = &bpf_total_size_none;
     break;
   }
-  char comm[16] = (p->comm);
-
+  
+  char comm[TASK_COMM_LEN];
+  bpf_get_current_comm(&comm, int sizeof(comm) )
+  
   increment_map(pMap, &comm, p->bytes);
   return 0;
 }
