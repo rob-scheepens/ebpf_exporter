@@ -12,7 +12,7 @@ struct total_size
 {
   __uint(type, BPF_MAP_TYPE_HASH);
   __uint(max_entries, 8192);
-  __type(key, u64);
+  __type(key, char[16]);
   __type(value, u64);
 };
 
