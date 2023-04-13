@@ -1,0 +1,13 @@
+metrics:
+  histograms:
+    - name: bb_byteswritten
+      help: Number of bytes written 
+      bucket_type: exp2
+      bucket_min: 0
+      bucket_max: 1 
+      bucket_multiplier: 1
+      labels:
+        - name: bytes_written
+          size: 8
+          decoders:
+            - name: uint

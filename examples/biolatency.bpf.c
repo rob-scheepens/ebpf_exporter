@@ -72,7 +72,7 @@ static __always_inline int trace_rq_start(struct request *rq)
     return 0;
 }
 
-SEC("raw_tp/block_rq_insert")
+SEC("tracepoint/block_rq_insert")
 int block_rq_insert(struct bpf_raw_tracepoint_args *ctx)
 {
     /**
@@ -87,7 +87,7 @@ int block_rq_insert(struct bpf_raw_tracepoint_args *ctx)
     }
 }
 
-SEC("raw_tp/block_rq_issue")
+SEC("tracepoint/block_rq_issue")
 int block_rq_issue(struct bpf_raw_tracepoint_args *ctx)
 {
     /**
@@ -102,7 +102,7 @@ int block_rq_issue(struct bpf_raw_tracepoint_args *ctx)
     }
 }
 
-SEC("raw_tp/block_rq_complete")
+SEC("tracepoint/block_rq_complete")
 int block_rq_complete(struct bpf_raw_tracepoint_args *ctx)
 {
     u64 *tsp, flags, delta_us, latency_slot;
