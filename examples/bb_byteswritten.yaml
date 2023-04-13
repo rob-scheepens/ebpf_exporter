@@ -1,13 +1,37 @@
 metrics:
-  histograms:
-    - name: bb_byteswritten
-      help: Number of bytes written 
-      bucket_type: exp2
-      bucket_min: 0
-      bucket_max: 1 
-      bucket_multiplier: 1
+  counters:
+    - name: bpf_total_size_written
+      help: Number of bytes written
       labels:
-        - name: bytes_written
+        - name: pid
+          size: 8
+          decoders:
+            - name: uint
+    - name: bpf_total_size_read
+      help: Number of bytes read
+      labels:
+        - name: pid
+          size: 8
+          decoders:
+            - name: uint
+    - name: bpf_total_size_discard
+      help: Number of bytes discard
+      labels:
+        - name: pid
+          size: 8
+          decoders:
+            - name: uint
+    - name: bpf_total_size_none
+      help: Number of bytes none
+      labels:
+        - name: pid
+          size: 8
+          decoders:
+            - name: uint
+    - name: bpf_total_size_unknown
+      help: Number of bytes unknown
+      labels:
+        - name: pid
           size: 8
           decoders:
             - name: uint
