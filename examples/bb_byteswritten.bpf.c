@@ -71,9 +71,10 @@ static __always_inline int trace_rq_start(struct block_rq_issue_struct *p)
     pMap = &bpf_total_size_none;
     break;
   }
-  u64 pid = (bpf_get_current_pid_tgid() >> 32);
+  #u64 pid = (bpf_get_current_pid_tgid() >> 32);
+  char comm = (p->comm);
 
-  increment_map(pMap, &pid, p->bytes);
+  increment_map(pMap, &comm, p->bytes);
   return 0;
 }
 
